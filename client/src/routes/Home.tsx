@@ -7,6 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
 
 const Home = () => {
   const location = useLocation();
@@ -53,6 +54,7 @@ const Home = () => {
         />
         <br />
         <p>{errors.query && errors.query.message}</p>
+        <ErrorMessage errors={errors} name="query" message={errors.query?.message} />
         <input type="submit" value="検索" />
       </form>
       <div>Result: {data?.query}</div>
